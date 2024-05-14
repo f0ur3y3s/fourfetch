@@ -37,8 +37,9 @@ clean:
 	@rm -rf $(BIN)
 	@find . -name "*.o" -exec rm -rf {} \;
 	@find . -name "*.log" -exec rm -rf {} \;
+	@$(RM) -rf $(TEST_EXECUTABLES)
 
-test: $(TEST_OBJS) $(TEST_EXECUTABLES)
+tests: $(TEST_OBJS)
 	@echo "[i] Compiling tests..."
 	@$(foreach test, $(TEST_SRC), \
 	$(CC) $(TEST_FLAGS) $(test) -o $(test:.c=) $(TEST_OBJS) $(UNITY_SRC) $(LINKS); \
